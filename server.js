@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
         packageArray: packages.extensions
     })
 })
-app.get('/:extensions', (req, res) => {
+// app.get('/:extensions', (req, res) => {
     
-})
+// })
 app.listen(3000, () => console.log('app is ready!'))
