@@ -1,0 +1,4 @@
+{
+    "exec": "node server.js",
+    "ext": "ejs,js,json"
+}

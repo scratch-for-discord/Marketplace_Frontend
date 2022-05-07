@@ -1,0 +1,29 @@
+{
+    "extensions": [
+        {
+            "name": "Dashboard",
+            "description": "An extension to create a dashboard for your bot",
+            "creator": "AHQ Miness"
+        },
+        {
+            "name": "Akinator",
+            "description": "An extension to to create an Akinator bot",
+            "creator": "Retro"
+        },
+        {
+            "name": "Scratch API",
+            "description": "Get information from scratch API",
+            "creator": "Frostzzone"
+        },
+        {
+            "name": "Github",
+            "description": "Get data from github",
+            "creator": "Frostzzone"
+        },
+        {
+            "name": "File System",
+            "description": "Read Write and control your files with this extension",
+            "creator": "Frostzzone"
+        }
+    ]
+}
