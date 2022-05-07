@@ -9,6 +9,8 @@
     <title>S4D MarketPlace</title>
 </head>
 <body class="bg-dark">
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
     <div class="container px-lg-5">
         <h1 class="mb-4 text-light mt-3">MarketPlace Extensions</h1>
         <div class="d-flex justify-content-center" style="flex-wrap: wrap;">
@@ -19,7 +21,7 @@
                         <div class="card-text mb-2 text-light"><%= package.description %></div>
                         <div class="card-subtitle" style="color: rgb(195, 195, 195);">Created by: <%= package.creator %></div>
                         <a href="/" class="btn btn-primary mt-3 mx-1">Read More</a>
-                        <button class="btn btn-secondary mx-1 mt-3">Download</button>
+                        <button class="btn btn-secondary mx-1 mt-3" id="download-btn-<%= package.id %>">Download</button>
                     </div>
                 </div>
             <% } %>

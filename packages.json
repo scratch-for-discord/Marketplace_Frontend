@@ -3,27 +3,32 @@
         {
             "name": "Dashboard",
             "description": "An extension to create a dashboard for your bot",
-            "creator": "AHQ Miness"
+            "creator": "AHQ Miness",
+            "id": "00000000000001"
         },
         {
             "name": "Akinator",
             "description": "An extension to to create an Akinator bot",
-            "creator": "Retro"
+            "creator": "Retro",
+            "id": "00000000000002"
         },
         {
             "name": "Scratch API",
             "description": "Get information from scratch API",
-            "creator": "Frostzzone"
+            "creator": "Frostzzone",
+            "id": "00000000000003"
         },
         {
             "name": "Github",
             "description": "Get data from github",
-            "creator": "Frostzzone"
+            "creator": "Frostzzone",
+            "id": "00000000000004"
         },
         {
             "name": "File System",
             "description": "Read Write and control your files with this extension",
-            "creator": "Frostzzone"
+            "creator": "Frostzzone",
+            "id": "00000000000005"
         }
     ]
 }
