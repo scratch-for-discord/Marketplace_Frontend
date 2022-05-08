@@ -1,4 +1,5 @@
 {
     "exec": "node server.js",
-    "ext": "ejs,js,json"
+    "ext": "ejs,js,json",
+    "ignore": "./siteSettings.json"
 }
