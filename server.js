@@ -4,6 +4,7 @@ const Database = require('easy-json-database')
 const db = new Database('./siteSettings.json')
 // const mongoose = require('mongoose')
 // const Download = require('./modals/download.js')
+let loggedIn = []
 const app = express()
 const http = require('http')
 const server = http.createServer(app)
@@ -25,23 +26,18 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login/login')
 })
-app.post('/login', urlEncodedParser, (req, res) => {
-    const isValidUUID = db.has(req.body.uuid)
-    if(isValidUUID) {
-        console.log('Valid UUID')
-    } else {
-        console.log('Invalid UUID')
-    }
-})
+let user
 app.post('/create', urlEncodedParser, async (req, res) => {
     const newUuid = uuidV4()
     await db.set(`${newUuid}-username`, req.body.username)
     await db.push(`uuids`, newUuid)
     res.redirect('/')
-    io.emit('loggedIn', {
-        username: req.body.username,
-        uuid: newUuid
-    })
+    user = req.body.username
+})
+app.post('/login', urlEncodedParser, async (req, res) => {
+    if(!db.has(`${req.body.uuid}-username`)) return res.redirect('/login')
+    res.redirect('/')
+    user = req.body.username
 })
 // app.get('/download/:download', (req, res) => {
     
@@ -52,6 +48,10 @@ io.on('connection', (socket) => {
     })
     socket.on('createUuid', () => {
         socket.emit('uuidCreated', uuidV4())
+    })
+    socket.on('isUserLoggedIn', () => {
+        socket.emit('userLoggedIn', user)
+        user = ""
     })
 })
 // app.get('/:extensions', (req, res) => {

@@ -2,6 +2,8 @@ const socket = io('/')
 const dashboardBtn = document.getElementById('download-btn-00000000000001')
 const createUuid = document.querySelector('#create-uuid')
 const loginInfo = document.getElementById('login-info')
+const login = "Login"
+loginInfo.innerHTML = login
 createUuid.addEventListener('click', () => {
     socket.emit('createUuid')
 })
@@ -15,8 +17,7 @@ socket.on('download-error', (e) => {
 socket.on('uuidCreated', (uuid) => {
     alert(`Your uuid is ${uuid}`)
 })
-socket.on('loggedIn', (information) => {
-    console.log(information)
-    loginInfo.href == "/"
-    loginInfo.innerHTML == information.username
+socket.emit('isUserLoggedIn')
+socket.on('userLoggedIn', (user) => {
+    loginInfo.innerHTML = user || "Login"
 })

@@ -29,7 +29,7 @@
     </nav>
     <div class="container px-lg-5">
         <h3 class="text-light"><br>Login</h3>
-        <form action="/login" method="POST">
+        <form action="/login" method="post">
             <div class="mb-3 mt-3">
                 <label for="username" class="form-label text-light">Your Username</label>
                 <input type="text" class="form-control" id="username" required name="username">
@@ -39,7 +39,7 @@
                 <input type="text" class="form-control" id="uuid" required name="uuid">
             </div>
             <a href="/create" class="btn btn-secondary">Create Account</a>
-            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn btn-primary" type="submit" id="sumit">Login</button>
         </form>
     </div>
 </body>
