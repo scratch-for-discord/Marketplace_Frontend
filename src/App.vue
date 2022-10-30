@@ -22,7 +22,7 @@ import UserData from "./components/UserDataNavBar.vue"
         className="text-green-500 text-right p-7"
         text="hello"
        ></ButtonVue> -->
-      <span class="text-green-700">HGYFYTFUTFUTFUTFU</span>
+      <!-- <span class="text-green-700">HGYFYTFUTFUTFUTFU</span> -->
       <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>

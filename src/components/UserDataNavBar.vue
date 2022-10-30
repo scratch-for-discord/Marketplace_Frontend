@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent, VueElement } from 'vue';
 import axios, { AxiosError } from "axios"
+import type User from "../interfaces/User"
 const comp = defineComponent({
     methods: {
         userData() {
@@ -11,9 +12,10 @@ const comp = defineComponent({
             return data
         }
     },
-    data () {
+    data ()  {
         return {
-        user: null
+        user: {} as User,
+        logged: false
         }
     },
     async created() {
@@ -24,35 +26,21 @@ const comp = defineComponent({
                withCredentials: true
             })
             this.user = await response.data;
+            this.logged = true
         } catch (error) {
+            this.logged = false
             console.log((error as AxiosError))
         }
-//         const options = {
-//   method: 'GET',
-// credentials: "include"
-// };
-
-// fetch('http://localhost:3020/api/user/', options)
-//   .then(response => response.json())
-//   .then(response => console.log(response))
-//   .catch(err => console.error(err));
-    
-//     // const data = await response;
-//         console.log(response?.status)
-//     }
-    //   mounted () {
-//     axios
-//       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-//       .then(response => (this.data = response))
   }
 })
 export default comp
+
 
 
 </script>
 
 <template>
     <div class="userData">
-        {{ user? user : "user is null" }}
+        {{ logged? user.banned? "you are banned" : "you are not banned" : null }} <a v-if="!logged" href='http://localhost:3020/auth/discord/login'>Login</a>
     </div>
 </template>
