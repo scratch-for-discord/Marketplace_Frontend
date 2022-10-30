@@ -18,7 +18,9 @@ const comp = defineComponent({
     },
     async created() {
   // GET request using fetch with async/await
-    const response = await fetch("http://localhost:3020/api/user/")
+    const response = await fetch("http://localhost:3020/api/user/", {
+        credentials: "include"
+    })
     
    // const data = await response;
     console.log(response.status)
