@@ -2,15 +2,10 @@
 import { defineComponent, VueElement } from 'vue';
 import axios, { AxiosError } from "axios"
 import type User from "../interfaces/User"
+import GetUserData from '@/functions/userData';
 const comp = defineComponent({
     methods: {
-        userData() {
-            let data 
-            fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
-            .then(res => (data = res.json()))
 
-            return data
-        }
     },
     data ()  {
         return {
@@ -20,6 +15,9 @@ const comp = defineComponent({
     },
     async created() {
   // GET request using fetch with async/await
+        // let userData = await GetUserData()
+        // this.logged = !userData.err
+        // this.user = userData.user
     let response;
         try {
             response = await axios.get("http://localhost:3020/api/user/", {
@@ -40,7 +38,13 @@ export default comp
 </script>
 
 <template>
-    <div class="userData">
-        {{ logged? user.banned? "you are banned" : "you are not banned" : null }} <a v-if="!logged" href='http://localhost:3020/auth/discord/login'>Login</a>
+    <div class="userData border-green-600 border-2 py-3 px-5 m-3">
+        {{ logged? user.banned? "you are banned" : "you are not banned" : null }} 
+
+        <a 
+        class="text-green-700 text-2xl font-bold hover:text-green-300 transition-all duration-300"
+        v-if="!logged" href='http://localhost:3020/auth/discord/login'>Login</a>
+        
     </div>
+    
 </template>
