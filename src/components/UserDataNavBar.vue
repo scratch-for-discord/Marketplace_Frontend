@@ -2,7 +2,7 @@
 import { defineComponent, VueElement } from 'vue';
 import axios, { AxiosError } from "axios"
 import type User from "../interfaces/User"
-import GetUserData from '@/functions/userData';
+import GetUserData from '../functions/userData';
 const comp = defineComponent({
     methods: {
 
@@ -38,13 +38,20 @@ export default comp
 </script>
 
 <template>
-    <div class="userData border-green-600 border-2 py-3 px-5 m-3">
-        {{ logged? user.banned? "you are banned" : "you are not banned" : null }} 
+    <!-- <div v-if="!logged" class="login text-white text-2xl my-4 text-center">
+        You are required to login in with discord to use marketplace
+    </div> -->
+    <div class="up grid place-items-center sm:place-items-start">
 
-        <a 
-        class="text-green-700 text-2xl font-bold hover:text-green-300 transition-all duration-300"
-        v-if="!logged" href='http://localhost:3020/auth/discord/login'>Login</a>
+        <!-- <div class="userData border-blue-600 border-2 py-3 px-5 m-3 text-center w-1/2 "> -->
+            <!-- {{ logged? user.banned? "you are banned" : "you are not banned" : null }}  -->
+
+            <a 
+            class="border-blue-600 border-2 py-3 px-5 m-2 text-center lg:w-[50%] md:w-[50%] w-[90%]  text-blue-700 
+            hover:bg-blue-400 text-3xl font-bold hover:text-black transition-all duration-500"
+            v-if="!logged" href='http://localhost:3020/auth/discord/login'>Login with Discord</a>
         
+        <!-- </div> -->
     </div>
     
 </template>
