@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, VueElement } from 'vue';
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 const comp = defineComponent({
     methods: {
         userData() {
@@ -13,18 +13,32 @@ const comp = defineComponent({
     },
     data () {
         return {
-        user: 10
+        user: null
         }
     },
     async created() {
   // GET request using fetch with async/await
-    const response = await fetch("http://localhost:3020/api/user/", {
-        credentials: "include"
-    })
+    let response;
+        try {
+            response = await axios.get("http://localhost:3020/api/user/", {
+               withCredentials: true
+            })
+            this.user = await response.data;
+        } catch (error) {
+            console.log((error as AxiosError).isAxiosError)
+        }
+        const options = {
+  method: 'GET',
+credentials: "include"
+};
+
+fetch('http://localhost:3020/api/user/', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
     
-   // const data = await response;
-    console.log(response.status)
-    this.user = await response.json();
+    // const data = await response;
+        console.log(response?.status)
     }
     //   mounted () {
 //     axios
@@ -39,6 +53,6 @@ export default comp
 
 <template>
     <div class="userData">
-        {{ user }}
+        {{ user? user : "user is null" }}
     </div>
 </template>
