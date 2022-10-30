@@ -1,26 +1,32 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 //import HelloWorld from "./components/HelloWorld.vue";
-import ButtonVue from "./components/templates/Button.vue";
+// import ButtonVue from "./components/Button.vue";
+import UserData from "./components/UserDataNavBar.vue"
 </script>
 
 <template>
   <header>
-    <img
+    <!-- <img
       alt="Vue logo"
       class="logo"
       src="@/assets/logo.svg"
       width="125"
       height="125"
-    />
+    /> -->
 
     <div class="wrapper">
-      <ButtonVue className="text-green-500 text-right p-7" text="hello"></ButtonVue>
-      <span class=" text-green-700">HGYFYTFUTFUTFUTFU</span>
-      <nav>
+      <UserData></UserData>
+      <!-- <ButtonVue
+            
+        className="text-green-500 text-right p-7"
+        text="hello"
+       ></ButtonVue> -->
+      <span class="text-green-700">HGYFYTFUTFUTFUTFU</span>
+      <!-- <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
-      </nav>
+      </nav> -->
     </div>
   </header>
 
