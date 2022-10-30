@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent, VueElement } from 'vue';
+import axios from "axios"
 const comp = defineComponent({
     methods: {
         userData() {
@@ -9,13 +10,21 @@ const comp = defineComponent({
 
             return data
         }
+    },
+    data () {
+        return {
+        user: 10
+        }
+    },
+    async created() {
+  // GET request using fetch with async/await
+    const response = await fetch("http://localhost:3020/api/user/")
+    
+   // const data = await response;
+    console.log(response.status)
+    this.user = await response.json();
     }
-//   data () {
-//     return {
-//       data: null
-//     }
-//   },
-//   mounted () {
+    //   mounted () {
 //     axios
 //       .get('https://api.coindesk.com/v1/bpi/currentprice.json')
 //       .then(response => (this.data = response))
@@ -28,6 +37,6 @@ export default comp
 
 <template>
     <div class="userData">
-        {{ userData() }}
+        {{ user }}
     </div>
 </template>
